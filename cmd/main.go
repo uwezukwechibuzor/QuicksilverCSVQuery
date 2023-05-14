@@ -7,6 +7,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/uwezukwechibuzor/QuicksilverCSVQuery/internal/csv"
 	delegatorValidatorQuery "github.com/uwezukwechibuzor/QuicksilverCSVQuery/internal/queries/delegatorValidatorMapping"
+	interchainStakingQuery "github.com/uwezukwechibuzor/QuicksilverCSVQuery/internal/queries/interchainStaking"
 	validatorDelegatorQuery "github.com/uwezukwechibuzor/QuicksilverCSVQuery/internal/queries/validatorDelegatorMapping"
 	vestingAccountsQuery "github.com/uwezukwechibuzor/QuicksilverCSVQuery/internal/queries/vestingAccounts"
 )
@@ -75,10 +76,30 @@ func main() {
 
 	queryVestingAccountsCmd.Flags().StringVarP(&outputFilename, "output", "o", "vesting_accounts.csv", "Output filename")
 
+	// Command for querying InterchainStaking Module
+	queryInterchainStakingCmd := &cobra.Command{
+		Use:   "query-interchain-staking",
+		Short: "query all “pending” [pending ⇒ completion time→null ]receipts in the x/interchainstaking module",
+		Args:  cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+
+			argChainID := args[0]
+
+			interchainStaking, err := interchainStakingQuery.QueryInterchainStaking(argChainID)
+			if err != nil {
+				return err
+			}
+			return csv.WriteCSV(interchainStaking, outputFilename)
+		},
+	}
+
+	queryInterchainStakingCmd.Flags().StringVarP(&outputFilename, "output", "o", "interchain-staking.csv", "Output filename")
+
 	// Add commands to root command
 	rootCmd.AddCommand(queryValidatorDelegatorCmd)
 	rootCmd.AddCommand(queryDelegatorValidatorCmd)
 	rootCmd.AddCommand(queryVestingAccountsCmd)
+	rootCmd.AddCommand(queryInterchainStakingCmd)
 
 	// Execute the root command
 	if err := rootCmd.Execute(); err != nil {
