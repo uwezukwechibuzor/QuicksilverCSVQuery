@@ -10,7 +10,7 @@ Install [Go](https://go.dev/dl/)
 $ make build
 ```
 
-Run to Available Commands
+Run to see Available Commands
 
 ```
 ./app
