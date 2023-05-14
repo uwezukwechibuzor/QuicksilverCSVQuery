@@ -12,7 +12,7 @@ type PubKey struct {
 	Key  string `json:"key"`
 }
 
-type PeriodicVestingAccount struct {
+type VestingAccount struct {
 	Type               string             `json:"@type"`
 	BaseVestingAccount BaseVestingAccount `json:"base_vesting_account"`
 	StartTime          string             `json:"start_time"`
@@ -38,5 +38,5 @@ type Coin struct {
 }
 
 type AccountsResponse struct {
-	Accounts []PeriodicVestingAccount `json:"accounts"`
+	Accounts []VestingAccount `json:"accounts"`
 }
