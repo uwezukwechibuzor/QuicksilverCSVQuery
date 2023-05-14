@@ -9,9 +9,9 @@ import (
 )
 
 // Function to query Validator -> Delegator mapping
-func QueryInterchainStaking(chain_id string) ([]Receipts, error) {
+func QueryInterchainStaking(chainID string) ([]Receipts, error) {
 	// Construct the URL with the validator address
-	url := fmt.Sprintf(api.InterchainStakingURL, chain_id)
+	url := fmt.Sprintf(api.InterchainStakingURL, chainID)
 
 	// Make HTTP request to the endpoint
 	resp, err := http.Get(url)
@@ -26,12 +26,29 @@ func QueryInterchainStaking(chain_id string) ([]Receipts, error) {
 	}
 
 	// Parse the response body and extract the queried data
-	var Receipt ReceiptsResponse
+	var receiptsResponse ReceiptsResponse
 
-	err = json.NewDecoder(resp.Body).Decode(&Receipt)
+	err = json.NewDecoder(resp.Body).Decode(&receiptsResponse)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse response body: %v", err)
 	}
 
-	return Receipt.Receipts, nil
+	// Create a new slice to store the pending receipts
+	newReceipts := make([]Receipts, 0)
+
+	// Query all pending receipts in the x/interchainstaking module
+	foundNullReceipts := false
+	for _, receipt := range receiptsResponse.Receipts {
+		if receipt.Completed == "" {
+			newReceipts = append(newReceipts, receipt)
+			foundNullReceipts = true
+		}
+	}
+
+	// Check if any receipts were found
+	if !foundNullReceipts {
+		return nil, fmt.Errorf("no matching accounts found")
+	}
+
+	return newReceipts, nil
 }

@@ -78,7 +78,7 @@ func main() {
 
 	// Command for querying InterchainStaking Module
 	queryInterchainStakingCmd := &cobra.Command{
-		Use:   "query-interchain-staking",
+		Use:   "query-interchain-staking [chain-id]",
 		Short: "query all “pending” [pending ⇒ completion time→null ]receipts in the x/interchainstaking module",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
