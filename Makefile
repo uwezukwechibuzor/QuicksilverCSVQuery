@@ -7,6 +7,4 @@ build:
 	@echo "--> Building app"
 	go build -o app cmd/main.go
 
-run:
-	@echo "--> Running app"
-	./app $(command) $(flags)
+.PHONY: lint build
