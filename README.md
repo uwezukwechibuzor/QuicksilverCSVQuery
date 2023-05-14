@@ -54,5 +54,5 @@ Samples of Data Output in CSV format
 [x/InterchainStaking Module](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/blob/master/interchain-staking.csv)
 ![Screenshot 2023-05-15 at 00 32 35](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/assets/66339097/2a458b68-65ea-4ae5-90a6-ec560376774a)
 
-[vesting accounts details(DelayedVestingAccount, PermanentLockedAccount and PeriodicVestingAccount)](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/blob/master/vesting_accounts.csv)
+[Vesting Accounts Details(DelayedVestingAccount, PermanentLockedAccount and PeriodicVestingAccount)](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/blob/master/vesting_accounts.csv)
 ![Screenshot 2023-05-15 at 00 33 37](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/assets/66339097/f34b9888-5b79-4a67-83a0-30d7ae5eb11b)
