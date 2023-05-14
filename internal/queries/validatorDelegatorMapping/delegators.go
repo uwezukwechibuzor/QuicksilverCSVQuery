@@ -11,4 +11,3 @@ type DelegationResponses struct {
 		Amount string `json:"amount"`
 	} `json:"balance"`
 }
-

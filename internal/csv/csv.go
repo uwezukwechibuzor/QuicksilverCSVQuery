@@ -24,4 +24,3 @@ func WriteCSV(data interface{}, filename string) error {
 
 	return nil
 }
-

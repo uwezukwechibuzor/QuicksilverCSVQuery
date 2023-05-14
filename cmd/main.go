@@ -13,7 +13,6 @@ import (
 )
 
 func main() {
-
 	var outputFilename string
 
 	// Root command
@@ -28,11 +27,9 @@ func main() {
 		Short: "Query Validator -> Delegator mapping",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-
 			argValidatorAddress := args[0]
 
 			mapping, err := validatorDelegatorQuery.QueryValidatorDelegatorMapping(argValidatorAddress)
-
 			if err != nil {
 				return err
 			}
@@ -47,7 +44,6 @@ func main() {
 		Short: "Query Delegator -> Validator mapping",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-
 			argDelegatorAddress := args[0]
 
 			mapping, err := delegatorValidatorQuery.QueryDelegatorValidatorMapping(argDelegatorAddress)
@@ -65,7 +61,6 @@ func main() {
 		Use:   "query-vesting-accounts",
 		Short: "Query Vesting Accounts Details",
 		RunE: func(cmd *cobra.Command, args []string) error {
-
 			vestingAccounts, err := vestingAccountsQuery.QueryVestingAccounts()
 			if err != nil {
 				return err
@@ -82,7 +77,6 @@ func main() {
 		Short: "query all “pending” [pending ⇒ completion time→null ]receipts in the x/interchainstaking module",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-
 			argChainID := args[0]
 
 			interchainStaking, err := interchainStakingQuery.QueryInterchainStaking(argChainID)
@@ -106,5 +100,4 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-
 }
