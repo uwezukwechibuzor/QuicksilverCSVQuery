@@ -3,11 +3,13 @@ package queries
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/uwezukwechibuzor/QuicksilverCSVQuery/internal/api"
 )
 
+// Function to query Vesting Accounts
 // Function to query Vesting Accounts
 func QueryVestingAccounts() ([]PeriodicVestingAccount, error) {
 	// Construct the URL with the account query
@@ -33,5 +35,16 @@ func QueryVestingAccounts() ([]PeriodicVestingAccount, error) {
 		return nil, fmt.Errorf("failed to parse response body: %v", err)
 	}
 
-	return mappingResponse.Accounts, nil
+	// Create a new slice to store the filtered accounts
+	filteredAccounts := make([]PeriodicVestingAccount, 0)
+
+	// Check that the account type returned are DelayedVestingAccount, PeriodicVestingAccount, and PermanentLockedAccount
+	for _, account := range mappingResponse.Accounts {
+		if account.Type == "/cosmos.vesting.v1beta1.PeriodicVestingAccount" || account.Type == "/cosmos.vesting.v1beta1.DelayedVestingAccount" || account.Type == "/cosmos.vesting.v1beta1.PermanentLockedAccount" {
+			filteredAccounts = append(filteredAccounts, account)
+		}
+	}
+	log.Println(filteredAccounts)
+
+	return filteredAccounts, nil
 }
