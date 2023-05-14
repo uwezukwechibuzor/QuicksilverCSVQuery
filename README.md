@@ -23,7 +23,7 @@ Run to Available Commands
 <img width="772" alt="Screenshot 2023-05-15 at 00 19 39" src="https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/assets/66339097/3a136a7f-d46f-44af-ad93-798fe30a84d9">
 <img width="772" alt="Screenshot 2023-05-15 at 00 20 02" src="https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/assets/66339097/e5704894-fa3f-4fc4-9921-01bdb3d4424e">
 
-Examples and data in csv format
+Commandline Samples
 
 
 ```
@@ -42,6 +42,17 @@ Examples and data in csv format
 ./app  query-vesting-accounts --output vesting_accounts.csv 
 ```
 
+Samples of Data Output in CSV format
 
 
+[Delegator Validator Mapping](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/blob/master/delegator_validator_mapping.csv)
+![Screenshot 2023-05-15 at 00 30 56](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/assets/66339097/eb6aefb4-109c-4b97-8b42-1606287470da)
 
+[Validator Delegator Mapping](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/blob/master/validator_delegator_mapping.csv)
+![Screenshot 2023-05-15 at 00 33 05](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/assets/66339097/c441a1d6-49fc-4a1a-a01f-ecf4bf0efa5e)
+
+[x/InterchainStaking Module](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/blob/master/interchain-staking.csv)
+![Screenshot 2023-05-15 at 00 32 35](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/assets/66339097/2a458b68-65ea-4ae5-90a6-ec560376774a)
+
+[vesting accounts details(DelayedVestingAccount, PermanentLockedAccount and PeriodicVestingAccount)](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/blob/master/vesting_accounts.csv)
+![Screenshot 2023-05-15 at 00 33 37](https://github.com/uwezukwechibuzor/QuicksilverCSVQuery/assets/66339097/f34b9888-5b79-4a67-83a0-30d7ae5eb11b)
