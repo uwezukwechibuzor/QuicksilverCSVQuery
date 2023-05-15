@@ -8,9 +8,9 @@ import (
 	"github.com/uwezukwechibuzor/QuicksilverCSVQuery/internal/api"
 )
 
-// Function to query Validator -> Delegator mapping
+// Function to query InterchainStaking Module
 func QueryInterchainStaking(chainID string) ([]Receipts, error) {
-	// Construct the URL with the validator address
+	// Construct the URL with the chainID
 	url := fmt.Sprintf(api.InterchainStakingURL, chainID)
 
 	// Make HTTP request to the endpoint
@@ -47,7 +47,7 @@ func QueryInterchainStaking(chainID string) ([]Receipts, error) {
 
 	// Check if any receipts were found
 	if !foundNullReceipts {
-		return nil, fmt.Errorf("no matching accounts found")
+		return nil, fmt.Errorf("no completion time for any receipt is null")
 	}
 
 	return newReceipts, nil
